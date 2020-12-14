@@ -20,8 +20,8 @@ const App: React.FunctionComponent<{}> = () => {
                 fallback={<>Loading</>}
               >
                 <Switch>
-                  <Route exact={true} path="/" component={Home} />
-                  <Route path="/factures" component={Factures} />
+                  <Route exact path="/" component={Home} />
+                  <Route exact  path="/factures" component={Factures} />
                   <Route component={NotFound} />
                 </Switch>
               </Suspense>

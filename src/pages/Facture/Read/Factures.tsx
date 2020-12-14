@@ -9,27 +9,28 @@ interface FacturesState {
 }
 
 const Factures: FC<{}> = (): ReactElement => {
+  
   const [state, setState] = useState<FacturesState>({
     loading: false,
     items: [],
   });
 
   const url: string =
-    "http://localhost:8080/factureService/factures/201907311001";
+    "http://localhost:8080/factures/85292702900011";
 
   useEffect(() => {
     const fetchData = async () => {
       setState({ ...state, loading: true });
-      const result = await Axios(url);
+      const result = await Axios(url);     
       setState({ ...state, items: result.data, loading: false });
     };
     fetchData();
-  }, [url]);
+  }, []);
 
   if (state.loading) {
-    return <h1>Loading...</h1>;
+    setState({ ...state, loading: false });
+    return <h1>Loading...Please wait</h1>;
   }
-
   return (
     <>
       <h2>Listes des factures</h2>
